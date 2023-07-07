@@ -1,0 +1,48 @@
+﻿<Window x:Class="DNDTisch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DND Tisch Datenbank" Height="400" Width="500"
+        Background="#4A4A4A">
+    <Grid>
+        <Grid.Resources>
+            <SolidColorBrush x:Key="DataGridGridLineColor" Color="White" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" x:Name="DataGrid" AutoGenerateColumns="False"
+                  AlternatingRowBackground="#666666"
+                  RowBackground="#4A4A4A"
+                  Foreground="White"
+                  BorderBrush="{StaticResource DataGridGridLineColor}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Rasse" Binding="{Binding Rasse}" />
+                <DataGridTextColumn Header="Beschreibung" Binding="{Binding Beschreibung}" />
+                <DataGridTextColumn Header="Kultur" Binding="{Binding Kultur}" />
+                <DataGridTextColumn Header="Land/Region" Binding="{Binding LandRegion}" />
+                <DataGridTextColumn Header="Gewichtung" Binding="{Binding Gewichtung}" />
+                <DataGridTextColumn Header="1d1000" Binding="{Binding Zahl1d1000}" />
+            </DataGrid.Columns>
+            <DataGrid.GridLinesVisibility>Horizontal</DataGrid.GridLinesVisibility>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#A30000" />
+                    <Setter Property="Foreground" Value="White" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
+        <Button Grid.Row="1" Content="Gewichtung berechnen" Click="CalculateWeightButton_Click"
+                Background="#A30000" Foreground="White" Margin="5" />
+        <Button Grid.Row="2" Content="Exportieren" Click="ExportButton_Click"
+                Background="#A30000" Foreground="White" Margin="5" />
+
+        <TextBlock Grid.Row="3" x:Name="GewichtungSummeTextBlock" Margin="5" FontWeight="Bold"
+                   Foreground="WhiteSmoke" />
+
+    </Grid>
+</Window>
